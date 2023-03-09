@@ -1,0 +1,47 @@
+const db = require('./helper/db.connect')
+const express = require('express')
+const app = express()
+const port = 5000
+
+//body-parser
+app.use(express.urlencoded({ extended: true })) //bentuk body
+app.use(express.json()) //bentuk json
+
+//middleware
+const myLogger = (req, res, next) => {
+  console.log("ini adalah middleware");
+  next();
+}
+const checker = (req, res, next) => {
+  if (req.params.id == 1) return res.send("data tidak boleh dihapus");
+  next();
+}
+
+//routing
+app.get('/', (req, res) => {
+  res.send('firman subagja')
+})
+
+app.post('/user', (req, res) => {
+  console.log(req.body)
+  res.send('ini adalah post')
+})
+
+app.delete("/user/:id", checker, (req, res) => {
+  console.log(req.params, '<<<< ini adalah params')
+  res.send('ini adalah method deleted')
+})
+
+app.put("/user/:id", (req, res) => {
+  console.log(req.params, '<<<< ini adalah params')
+  console.log(req.body, '<<<< ini adalah body')
+  res.send('ini adalah data route put')
+})
+
+//listen
+app.listen(port, () => {
+  console.log(`port sedang berjalan di ${port}`)
+})
+
+
+
