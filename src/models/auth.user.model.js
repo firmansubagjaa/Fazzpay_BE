@@ -31,7 +31,7 @@ const authUserModel = {
         if (err) {
           return failed(err.message);
         } else {
-          return success(result);
+          return success({ firstname, lastname, email, password, pin, phone, balance, topup, amount });
         }
       })
     })

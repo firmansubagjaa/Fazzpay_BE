@@ -55,6 +55,9 @@ const authUserController = {
             password: hash,
             pin: req.body.pin,
             phone: req.body.phone,
+            balance: req.body.balance,
+            topup: req.body.topup,
+            amount: req.body.amount,
           }
           return authUserModel
             .register(request)
