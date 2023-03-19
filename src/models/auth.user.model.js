@@ -25,9 +25,9 @@ const authUserModel = {
     // });
   },
 
-  register: ({ firstname, lastname, email, password, pin, phone, balance }) => {
+  register: ({ firstname, lastname, email, password, pin, phone, balance, topup, amount }) => {
     return new Promise((success, failed) => {
-      db.query(`INSERT INTO users (id_user, firstname, lastname, email, password, pin, phone) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [uuidv4(), firstname, lastname, email, password, pin, phone, balance], (err, result) => {
+      db.query(`INSERT INTO users (id_user, firstname, lastname, email, password, pin, phone, balance, topup, amount) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, [uuidv4(), firstname, lastname, email, password, pin, phone, balance, topup, amount], (err, result) => {
         if (err) {
           return failed(err.message);
         } else {
