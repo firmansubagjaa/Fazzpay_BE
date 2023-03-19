@@ -21,6 +21,9 @@ const authUserController = {
               lastname: result.lastname,
               email: result.email,
               phone: result.phone,
+              balance: result.balance,
+              topup: result.topup,
+              amount: result.amount,
             }
           })
         }
